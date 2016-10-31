@@ -19998,6 +19998,11 @@ mips_option_override (void)
     error ("unsupported combination: %s",
 	   "-march=r5900 -mhard-float -mdouble-float");
 
+  /* The R5900 does not support some MIPS16 instructions.  */
+  if (TARGET_MIPS5900 && ((mips_base_compression_flags & MASK_MIPS16) != 0))
+	  error("unsupported combination: %s",
+		  "-march=r5900 -mips16");
+
   /* If a -mlong* option was given, check that it matches the ABI,
      otherwise infer the -mlong* setting from the other options.  */
   if ((target_flags_explicit & MASK_LONG64) != 0)
