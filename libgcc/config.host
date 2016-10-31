@@ -154,7 +154,11 @@ mips*-*-*)
 	cpu_type=mips
 	tmake_file="mips/t-mips"
 	if test "${libgcc_cv_mips_hard_float}" = yes; then
+	    if test "${libgcc_cv_mips_single_float}" = yes; then
+                tmake_file="${tmake_file} t-hardfp-sf t-hardfp"
+	    else
 		tmake_file="${tmake_file} t-hardfp-sfdf t-hardfp"
+	    fi
 	else
 		tmake_file="${tmake_file} t-softfp-sfdf"
 	fi
@@ -987,19 +991,16 @@ mips*-*-netbsd*)			# NetBSD/mips, either endian.
 mips*-*-linux*)				# Linux MIPS, either endian.
 	extra_parts="$extra_parts crtfastmath.o"
 	tmake_file="${tmake_file} t-crtfm"
-	case ${host} in
-	  mips64r5900* | mipsr5900*)
-	    # The MIPS16 support code uses floating point
-	    # instructions that are not supported on r5900.
-	    ;;
-	  *)
+    if test "${libgcc_cv_mips16}" = yes; then
 	    tmake_file="${tmake_file} mips/t-mips16 t-slibgcc-libgcc"
-	    ;;
-	esac
+    fi
 	md_unwind_header=mips/linux-unwind.h
 	;;
 mips*-sde-elf*)
-	tmake_file="$tmake_file mips/t-crtstuff mips/t-mips16"
+	tmake_file="$tmake_file mips/t-crtstuff"
+    if test "${libgcc_cv_mips16}" = yes; then
+	  tmake_file="${tmake_file} mips/t-mips16"
+    fi
 	case "${with_newlib}" in
 	  yes)
 	    # newlib / libgloss.
@@ -1029,7 +1030,10 @@ mipsisa64sb1-*-elf* | mipsisa64sb1el-*-elf*)
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
 mips-*-elf* | mipsel-*-elf*)
-	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
+	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff"
+    if test "${libgcc_cv_mips16}" = yes; then
+	  tmake_file="${tmake_file} mips/t-mips16"
+    fi
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
 mipsr5900-*-elf* | mipsr5900el-*-elf*)
@@ -1037,7 +1041,10 @@ mipsr5900-*-elf* | mipsr5900el-*-elf*)
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
 mips64-*-elf* | mips64el-*-elf*)
-	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
+	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff"
+    if test "${libgcc_cv_mips16}" = yes; then
+	  tmake_file="${tmake_file} mips/t-mips16"
+    fi
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
 mips64r5900-*-elf* | mips64r5900el-*-elf*)
@@ -1053,7 +1060,10 @@ mips64orion-*-elf* | mips64orionel-*-elf*)
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
 mips*-*-rtems*)
-	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
+	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff"
+    if test "${libgcc_cv_mips16}" = yes; then
+	  tmake_file="${tmake_file} mips/t-mips16"
+    fi
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
 mips-wrs-vxworks)

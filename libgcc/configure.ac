@@ -337,6 +337,23 @@ mips*-*-*)
     ])],
     [libgcc_cv_mips_hard_float=yes],
     [libgcc_cv_mips_hard_float=no])])
+  AC_CACHE_CHECK([whether the target is single-float],
+		 [libgcc_cv_mips_single_float],
+		 [AC_COMPILE_IFELSE(
+    [#ifndef __mips_single_float
+     #error FOO
+     #endif],
+    [libgcc_cv_mips_single_float=yes],
+    [libgcc_cv_mips_single_float=no])])
+  # Some targets (i.e. R5900) don't support some MIPS16 instructions.
+  AC_CACHE_CHECK([whether the target supports the MIPS16 ASE],
+		 [libgcc_cv_mips16],
+		 [CFLAGS_hold=$CFLAGS
+		 CFLAGS="$CFLAGS -mips16"
+		 AC_COMPILE_IFELSE([[int i;]],
+    [libgcc_cv_mips16=yes],
+    [libgcc_cv_mips16=no])
+	CFLAGS=$CFLAGS_hold])
 esac
 
 case ${host} in
