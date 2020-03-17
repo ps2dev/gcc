@@ -2655,7 +2655,7 @@ mips-*-elf* | mipsel-*-elf* | mipsr5900-*-elf* | mipsr5900el-*-elf*)
 	tmake_file="mips/t-elf"
 	;;
 mips64r5900-*-elf* | mips64r5900el-*-elf*)
-	tm_file="elfos.h newlib-stdint.h ${tm_file} mips/elf.h mips/n32-elf.h"
+	tm_file="elfos.h newlib-stdint.h ${tm_file} mips/elf.h mips/n32-elf.h mips/ps2sdk.h"
 	tmake_file="mips/t-elf"
 	tm_defines="${tm_defines} MIPS_ISA_DEFAULT=3 MIPS_ABI_DEFAULT=ABI_N32"
 	;;
