@@ -22,7 +22,7 @@ a copy of the GCC Runtime Library Exception along with this program;
 see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 <http://www.gnu.org/licenses/>.  */
 
-#ifdef __mips64
+#if defined(__mips64) && !defined(_MIPS_ARCH_R5900)
 #define _FP_W_TYPE_SIZE		64
 #define _FP_W_TYPE		unsigned long long
 #define _FP_WS_TYPE		signed long long
