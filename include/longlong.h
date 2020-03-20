@@ -844,7 +844,7 @@ extern UDItype __umulsidi3 (USItype, USItype);
 # define UDIV_TIME 38
 #endif
 
-#if defined (__mips__) && W_TYPE_SIZE == 32
+#if 0 //defined (__mips__) && W_TYPE_SIZE == 32
 #define umul_ppmm(w1, w0, u, v)						\
   do {									\
     UDItype __x = (UDItype) (USItype) (u) * (USItype) (v);		\
@@ -854,7 +854,7 @@ extern UDItype __umulsidi3 (USItype, USItype);
 #define UMUL_TIME 10
 #define UDIV_TIME 100
 
-#if (__mips == 32 || __mips == 64) && ! defined (__mips16)
+#if (__mips == 32 || __mips == 64) && !defined (__mips16) && !defined(_MIPS_ARCH_R5900)
 #define count_leading_zeros(COUNT,X)	((COUNT) = __builtin_clz (X))
 #define COUNT_LEADING_ZEROS_0 32
 #endif
