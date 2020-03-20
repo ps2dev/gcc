@@ -845,6 +845,17 @@ extern UDItype __umulsidi3 (USItype, USItype);
 #endif
 
 #if defined (__mips__) && W_TYPE_SIZE == 32
+/* Force R5900 to use mult for mulsidi3, this is used in muldi3 */
+#ifdef _MIPS_ARCH_R5900
+#define __umulsidi3(u, v) \
+  ({UDItype __w;							\
+    __asm__ ("multu	%1,%2\n\tpmfhl.lw %0"				\
+	     : "=d" (__w)						\
+	     : "d" ((USItype) (u)),					\
+	       "d" ((USItype) (v))					\
+	     : "hi", "lo");						\
+    __w; })
+#endif
 #define umul_ppmm(w1, w0, u, v)						\
   do {									\
     UDItype __x = (UDItype) (USItype) (u) * (USItype) (v);		\
