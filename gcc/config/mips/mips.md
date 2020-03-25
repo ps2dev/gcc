@@ -1788,7 +1788,7 @@
 		 (match_operand:SI 3 "register_operand" "l,l,l,d")))
    (clobber (match_scratch:SI 4 "=X,X,3,l"))
    (clobber (match_scratch:SI 5 "=X,X,X,&d"))]
-  "TARGET_MIPS3900 && !TARGET_MIPS16"
+  "(TARGET_MIPS3900 || TARGET_MIPS5900) && !TARGET_MIPS16"
   "@
     madd\t%1,%2
     madd\t%1,%2
