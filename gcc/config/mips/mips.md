@@ -1105,6 +1105,7 @@
 
 (define_delay (and (eq_attr "type" "branch")
 		   (not (match_test "TARGET_MIPS16"))
+		   (not (match_test "TARGET_FIX_R5900"))
 		   (eq_attr "branch_likely" "yes"))
   [(eq_attr "can_delay" "yes")
    (nil)
@@ -1114,6 +1115,7 @@
 ;; not annul on false.
 (define_delay (and (eq_attr "type" "branch,simd_branch")
 		   (not (match_test "TARGET_MIPS16"))
+		   (not (match_test "TARGET_FIX_R5900"))
 		   (ior (match_test "TARGET_CB_NEVER")
 			(and (eq_attr "compact_form" "maybe")
 			     (not (match_test "TARGET_CB_ALWAYS")))
