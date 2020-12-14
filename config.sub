@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2021-10-27'
+timestamp='2023-11-15'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -370,6 +370,10 @@ case $1 in
 			i386mach)
 				basic_machine=i386-mach
 				basic_os=mach
+				;;
+			iop)
+				basic_machine=mipsel-scei
+				os=irx
 				;;
 			isi68 | isi)
 				basic_machine=m68k-isi
@@ -1749,7 +1753,7 @@ case $os in
 	     | onefs* | tirtos* | phoenix* | fuchsia* | redox* | bme* \
 	     | midnightbsd* | amdhsa* | unleashed* | emscripten* | wasi* \
 	     | nsk* | powerunix* | genode* | zvmoe* | qnx* | emx* | zephyr* \
-	     | fiwix* )
+	     | fiwix* | irx*)
 		;;
 	# This one is extra strict with allowed versions
 	sco3.2v2 | sco3.2v[4-9]* | sco5v6*)
