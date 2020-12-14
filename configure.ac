@@ -1258,6 +1258,8 @@ case "${target}" in
     ;;
   mips*-*-linux*)
     ;;
+  mipsel-*-irx*)
+    ;;
   mips*-*-ultrix* | mips*-*-osf* | mips*-*-ecoff* | mips*-*-pe* \
   | mips*-*-irix* | mips*-*-lnews* | mips*-*-riscos*)
     noconfigdirs="$noconfigdirs ld gas gprof"

@@ -2716,6 +2716,11 @@ mips64r5900-*-elf* | mips64r5900el-*-elf*)
 	tmake_file="mips/t-elf"
 	tm_defines="${tm_defines} MIPS_ISA_DEFAULT=3 MIPS_ABI_DEFAULT=ABI_N32"
 	;;
+mipsel-*-irx*)
+	tm_file="dbxelf.h elfos.h newlib-stdint.h ${tm_file} mips/elf.h"
+	tmake_file="mips/t-elf mips/dbx.h"
+	target_cpu_default=MASK_SOFT_FLOAT_ABI
+	;;
 mips64-*-elf* | mips64el-*-elf*)
 	tm_file="elfos.h newlib-stdint.h ${tm_file} mips/elf.h"
 	tmake_file="mips/t-elf"
