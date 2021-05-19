@@ -1199,7 +1199,7 @@ struct mips_cpu_info {
 #define ISA_HAS_IEEE_754_2008	(mips_isa_rev >= 2)
 
 /* ISA has count leading zeroes/ones instruction (not implemented).  */
-#define ISA_HAS_CLZ_CLO		(mips_isa_rev >= 1 && !TARGET_MIPS16)
+#define ISA_HAS_CLZ_CLO		(mips_isa_rev >= 1 && !TARGET_MIPS16 && !TARGET_MIPS5900)
 
 /* ISA has count trailing zeroes/ones instruction.  */
 #define ISA_HAS_CTZ_CTO		(TARGET_LOONGSON_EXT2)
