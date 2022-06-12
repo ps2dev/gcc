@@ -4,7 +4,7 @@
     --start-group \
         %{g:-lg} %{!g:-lc} \
         -lcdvd \
-        -lps2sdkc \
+        -lcglue \
         -lkernel \
     --end-group"
 
