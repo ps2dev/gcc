@@ -4,6 +4,8 @@
     --start-group \
         %{g:-lg} %{!g:-lc} \
         -lcdvd \
+        -lpthread \
+        -lpthreadglue \
         -lcglue \
         -lkernel \
     --end-group"
