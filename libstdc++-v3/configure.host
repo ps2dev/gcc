@@ -372,7 +372,4 @@ case "${host}" in
     esac
     abi_baseline_subdir_switch=--print-multi-os-directory
     ;;
-  *-ps2*-*)
-    atomicity_dir="cpu/ps2"
-    ;;
 esac
