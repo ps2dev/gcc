@@ -16,6 +16,11 @@
 #undef ENDFILE_SPEC
 #define ENDFILE_SPEC "crtend.o%s crtn.o%s"
 
+#define TARGET_OS_CPP_BUILTINS()	\
+do {					\
+  builtin_define ("__ps2sdk__");		\
+} while (0)
+
 /* The following definitions are for shared object support. */
 /* Reference: gcc/config/mips/mips.h, gcc/config/mips/gnu-user.h */
 
