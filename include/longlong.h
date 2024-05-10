@@ -857,6 +857,17 @@ extern UDItype __umulsidi3 (USItype, USItype);
 #endif
 
 #if defined (__mips__) && W_TYPE_SIZE == 32
+/* Force R5900 to use mult for mulsidi3, this is used in muldi3 */
+#ifdef _MIPS_ARCH_R5900
+#define __umulsidi3(u, v) \
+  ({UDItype __w;							\
+    __asm__ ("multu	%1,%2\n\tpmfhl.lw %0"				\
+	     : "=d" (__w)						\
+	     : "d" ((USItype) (u)),					\
+	       "d" ((USItype) (v))					\
+	     : "hi", "lo");						\
+    __w; })
+#endif
 #define umul_ppmm(w1, w0, u, v)						\
   do {									\
     UDItype __x = (UDItype) (USItype) (u) * (USItype) (v);		\
@@ -866,7 +877,7 @@ extern UDItype __umulsidi3 (USItype, USItype);
 #define UMUL_TIME 10
 #define UDIV_TIME 100
 
-#if (__mips == 32 || __mips == 64) && ! defined (__mips16)
+#if (__mips == 32 || __mips == 64) && !defined (__mips16) && !defined(_MIPS_ARCH_R5900)
 #define count_leading_zeros(COUNT,X)	((COUNT) = __builtin_clz (X))
 #define COUNT_LEADING_ZEROS_0 32
 #endif
