@@ -1092,7 +1092,7 @@ mipsisa64sb1-*-elf* | mipsisa64sb1el-*-elf*)
 	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
-mips-*-elf* | mipsel-*-elf*)
+mips-*-elf* | mipsel-*-elf* | mipsel-*-irx*)
 	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;

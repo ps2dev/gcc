@@ -1165,7 +1165,7 @@ case ${target} in
       ;;
   esac
   ;;
-*-*-elf|arc*-*-elf*)
+*-*-elf|arc*-*-elf*|*-*-irx)
   # Assume that newlib is being used and so __cxa_atexit is provided.
   default_use_cxa_atexit=yes
   use_gcc_stdint=wrap
@@ -2768,7 +2768,7 @@ mipsisa64sb1-*-elf* | mipsisa64sb1el-*-elf*)
 	tmake_file="mips/t-elf mips/t-sb1"
 	tm_defines="${tm_defines} MIPS_ISA_DEFAULT=MIPS_ISA_MIPS64 MIPS_CPU_STRING_DEFAULT=\\\"sb1\\\" MIPS_ABI_DEFAULT=ABI_O64"
 	;;
-mips-*-elf* | mipsel-*-elf* | mipsr5900-*-elf* | mipsr5900el-*-elf*)
+mips-*-elf* | mipsel-*-elf* | mipsr5900-*-elf* | mipsr5900el-*-elf* | mipsel-*-irx*)
 	tm_file="elfos.h newlib-stdint.h ${tm_file} mips/elf.h"
 	tmake_file="mips/t-elf"
 	;;
