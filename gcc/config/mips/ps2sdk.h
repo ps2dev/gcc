@@ -3,6 +3,7 @@
     -lm \
     --start-group \
         %{g:-lg} %{!g:-lc} \
+        %{pg:-lprofglue} \
         -lcdvd \
         -lpthread \
         -lpthreadglue \
