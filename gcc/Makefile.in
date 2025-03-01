@@ -2214,7 +2214,7 @@ SELFTEST_FLAGS = -nostdinc $(DEVNULL) -S -o $(DEVNULL) \
 # s-selftest-<LANG>.  Otherwise, they should define it as empty.
 
 SELFTEST_TARGETS = @selftest_languages@
-selftest: $(SELFTEST_TARGETS)
+selftest: $(SELFTEST_TARGETS) xgcc$(exeext)
 
 # Recompile all the language-independent object files.
 # This is used only if the user explicitly asks for it.
